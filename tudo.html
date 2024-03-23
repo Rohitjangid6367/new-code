@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tudo.css">
+    <link rel="stylesheet"  
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <main>
+        <div class="box">
+            <input type="text" placeholder="right something here" id="item">
+            <ul id="tudobox"></ul>
+            <!--  -->
+
+        </div>
+<!-- <li><i class="fa fa-twitter"></i></li> -->
+
+
+
+
+
+
+    </main>
+</body>
+<script>
+   const item= document.querySelector("#item");
+   const tudobox=document.querySelector("#tudobox");
+   item.addEventListener("keyup",function(event){
+    // console.log(event.key); 
+    if(event.key=="Enter"){
+        tudoitem(this.value);
+        this.value="";
+    }
+   })
+
+//    now we will create element by dom
+const tudoitem=(item)=>{
+    const listitem=document.createElement('li')
+    listitem.innerHTML=`${item}<i class="fa fa-close"></i>`;
+    listitem.addEventListener("click",function(){
+        this.classList.toggle('done');
+    })
+   
+
+ //   now we will and addEventListenerfor the icon
+listitem.querySelector("i").addEventListener("click",function(){
+        listitem.remove()
+})
+tudobox.appendChild(listitem)
+}
+</script>
+
+</html>
